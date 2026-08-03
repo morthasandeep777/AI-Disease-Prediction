@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Disease Prediction System</title>
+
+    <p id="date"></p>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<script>
+document.getElementById("date").innerHTML =
+new Date().toDateString();
+</script>
+
+<body>
+
+    <div class="container">
+
+        <h1>🏥 AI Disease Prediction System</h1>
+
+        <form action="/predict" method="POST">
+
+            <div class="grid">
+
+                <div class="input-box">
+                    <label>Age</label>
+                    <input type="number" name="Age" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Fever</label>
+                    <select name="Fever">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>Cough</label>
+                    <select name="Cough">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>Fatigue</label>
+                    <select name="Fatigue">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>Headache</label>
+                    <select name="Headache">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>Nausea</label>
+                    <select name="Nausea">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>Dizziness</label>
+                    <select name="Dizziness">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>Chest Pain</label>
+                    <select name="Chest_Pain">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>Shortness of Breath</label>
+                    <select name="Shortness_of_Breath">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>Sore Throat</label>
+                    <select name="Sore_Throat">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>Body Pain</label>
+                    <select name="Body_Pain">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>Blood Pressure</label>
+                    <input type="number" name="BP" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Blood Sugar</label>
+                    <input type="number" name="Sugar" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Oxygen Level (%)</label>
+                    <input type="number" name="Oxygen_Level" required>
+                </div>
+
+            </div>
+
+            <button type="submit">
+                Predict Disease
+            </button>
+
+            <button type="reset" class="reset-btn">
+                Reset
+            </button>
+
+        </form>
+
+        {% if prediction_text %}
+
+        <div class="result">
+
+            <h2>Prediction Result</h2>
+
+            <h1>{{ prediction_text }}</h1>
+
+            <h3>Confidence : {{ probability }}%</h3>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
